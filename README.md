@@ -1,6 +1,6 @@
 # tpdia-dane-paliwowe
 Teoria Przestrzeni Danych i Algorytmów Projekt
-###Podział na 4 moduły:
+### Podział na 4 moduły:
 1. generator napływu danych w czasie
 2. psucie danych:
     * zgubienie/dublowanie rekordów (wierszy) w pliku 

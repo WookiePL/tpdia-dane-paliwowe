@@ -1,5 +1,6 @@
 package generator;
 
+import databreaker.DataBreaker;
 import datatype.NozzleMeasure;
 import datatype.Refuel;
 import datatype.TankMeasure;
@@ -20,7 +21,7 @@ public class InputGenerator {
     public InputGenerator() {
     }
 
-    protected ArrayList<String> openData(String path) {
+    public ArrayList<String> openData(String path) {
         List<String> listOfRecords = new ArrayList<>();
 
         try (Stream<String> stream = Files.lines(Paths.get(path))) {
@@ -35,12 +36,16 @@ public class InputGenerator {
 
 
     public static void main(String[] args) {
-        DataGenerator<TankMeasure> tankMeasureDataGenerator = new DataGenerator<>(new Record2TankMeasureConverter());
-        DataGenerator<Refuel> refuelDataGenerator = new DataGenerator<>(new RecordToRefuelConverter());
-        DataGenerator<NozzleMeasure> nozzleMeasureDataGenerator = new DataGenerator<>(new Record2NozzleMeasureConverter());
+        InputGenerator tankMeasureDataGenerator = new InputGenerator();
+        DataBreaker breaker = new DataBreaker();
         final String tank = "D:\\Projekty\\Uczelnia\\TPDIA\\Dane paliwowe\\dane\\Zestaw 1\\tankMeasures.log";
-        final String nozzle = "D:\\Projekty\\Uczelnia\\TPDIA\\Dane paliwowe\\dane\\Zestaw 1\\nozzleMeasures.log";
-        final String refuel = "D:\\Projekty\\Uczelnia\\TPDIA\\Dane paliwowe\\dane\\Zestaw 1\\refuel.log";
-        refuelDataGenerator.getData(refuel).forEach(System.out::println);
+        List<String> tankM = tankMeasureDataGenerator.openData(tank);
+        List<String> broken = breaker.run(tankM);
+        broken.forEach(System.out::println);
+        System.out.println("Before: " + tankM.size());
+        System.out.println("After: " + broken.size());
+        System.out.println("Deleted: " + breaker.deleted);
+        System.out.println("Duplicated: " + breaker.duplicates);
+
     }
 }

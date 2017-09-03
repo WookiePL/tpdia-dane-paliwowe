@@ -3,16 +3,16 @@ package datatype;
 import java.util.Date;
 
 public class Refuel {
-    //    1.	Data i godzina (stempel czasowy)
+    //    1.    Data i godzina (stempel czasowy)
     private Date timestamp;
 
-    //2.	Id zbiornika
+    //2.    Id zbiornika
     private Integer idOfTank;
 
-    //3.	Objętość paliwa – taka jak zadeklarowano w dostawie (całkowita objętość cysterny)
+    //3.    Objętość paliwa – taka jak zadeklarowano w dostawie (całkowita objętość cysterny)
     private Double fuelVolume;
 
-    //4.	Szybkość tankowania
+    //4.    Szybkość tankowania
     private Double refuelSpeed;
 
     public Refuel(Date timestamp, Integer idOfTank, Double fuelVolume, Double refuelSpeed) {

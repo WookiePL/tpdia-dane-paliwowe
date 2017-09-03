@@ -1,27 +1,35 @@
 package datatype;
 
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class TankMeasure {
-    //1.	Data i godzina (stempel czasowy)
+    //1.    Data i godzina (stempel czasowy)
     private Date timestamp;
 
-    //2.	LocationId – zawsze puste
-    //3.	MeterId – zawsze puste
+    //2.    LocationId – zawsze puste
+    private Integer locationId = null;
 
-    //4.	Id zbiornika
+    //3.    MeterId – zawsze puste
+    private Integer meterId = null;
+
+    //4.    Id zbiornika
     private Integer idOfTank;
 
-    //5.	Wysokość paliwa
+    //5.    Wysokość paliwa
     private Integer fuelLevel;
 
-    //6.	Objętość paliwa
-    private Integer fuelVolume;
+    //6.    Objętość paliwa
+    private Float fuelVolume;
 
-    //7.   	Temperatura paliwa
+    //7.       Temperatura paliwa
     private Integer fuelTemperature;
 
-    public TankMeasure(Date timestamp, Integer idOfTank, Integer fuelLevel, Integer fuelVolume, Integer fuelTemperature) {
+    public TankMeasure(Date timestamp, Integer idOfTank, Integer fuelLevel, Float fuelVolume, Integer fuelTemperature) {
         this.timestamp = timestamp;
         this.idOfTank = idOfTank;
         this.fuelLevel = fuelLevel;
@@ -41,7 +49,7 @@ public class TankMeasure {
         return fuelLevel;
     }
 
-    public Integer getFuelVolume() {
+    public Float getFuelVolume() {
         return fuelVolume;
     }
 

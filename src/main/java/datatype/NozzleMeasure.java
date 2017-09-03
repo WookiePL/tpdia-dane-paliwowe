@@ -4,23 +4,25 @@ import java.util.Date;
 
 public class NozzleMeasure {
 
-    //    1.	Data i godzina (stempel czasowy)
+    //    1.    Data i godzina (stempel czasowy)
     private Date timestamp;
-    //2.	LocationId – zawsze puste
 
-    //3.	Id pistoletu
+    //2.    LocationId – zawsze puste
+    private Integer locationId = null;
+
+    //3.    Id pistoletu
     private Integer idOfNozzle;
 
-    //4.	Id zbiornika
+    //4.    Id zbiornika
     private Integer idOfTank;
 
-    //5.	LiterCounter – bieżący licznik transakcji
+    //5.    LiterCounter – bieżący licznik transakcji
     private Float literCounter;
 
-    //6.	TotalCounter – całkowity licznik pistoletu
+    //6.    TotalCounter – całkowity licznik pistoletu
     private Float totalCounter;
 
-    //7.	Status: 1 – pistolet odłożony, 0 – pistolet podniesiony (trwa tankowanie)
+    //7.    Status: 1 – pistolet odłożony, 0 – pistolet podniesiony (trwa tankowanie)
     private Integer status;
 
     public NozzleMeasure(Date timestamp, Integer idOfNozzle, Integer idOfTank, Float literCounter, Float totalCounter, Integer status) {

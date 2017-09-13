@@ -13,6 +13,7 @@ public class DataBreaker {
 
     public List<String> run(List<String> records) {
         brokenRecords = new ArrayList<>();
+        this.swapLines(records);
         records.forEach(r -> breakRecord(r));
         return brokenRecords;
     }
@@ -61,10 +62,13 @@ public class DataBreaker {
     }
 
     public void swapLines(List<String> records) {
-        long howManyLinesToSwap = Math.round(0.1 * records.size());
+        final float PERCENT_OF_RECORDS_TO_SWAP = 0.005f;
+
+        long howManyLinesToSwap = Math.round(PERCENT_OF_RECORDS_TO_SWAP * records.size());
         for (int i = 1; i <= howManyLinesToSwap; i++) {
             Integer random = ThreadLocalRandom.current().nextInt(0, records.size() - 1);
             Collections.swap(records, random, random + 1);
+            System.out.println("2 records were swapped");
         }
     }
 }

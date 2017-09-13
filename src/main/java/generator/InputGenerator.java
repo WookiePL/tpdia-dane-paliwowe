@@ -1,39 +1,14 @@
 package generator;
 
 import databreaker.DataBreaker;
-import datatype.NozzleMeasure;
-import datatype.Refuel;
-import datatype.TankMeasure;
-import datatype.converter.Record2NozzleMeasureConverter;
-import datatype.converter.Record2TankMeasureConverter;
-import datatype.converter.RecordToRefuelConverter;
+import util.OpenSaveData;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class InputGenerator {
+public class InputGenerator extends OpenSaveData {
 
     public InputGenerator() {
     }
-
-    public ArrayList<String> openData(String path) {
-        List<String> listOfRecords = new ArrayList<>();
-
-        try (Stream<String> stream = Files.lines(Paths.get(path))) {
-            listOfRecords = stream.collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return (ArrayList<String>) listOfRecords;
-    }
-
-
-
 
     public static void main(String[] args) {
         InputGenerator tankMeasureDataGenerator = new InputGenerator();

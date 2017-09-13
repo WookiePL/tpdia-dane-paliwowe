@@ -1,21 +1,16 @@
 import databreaker.DataBreaker;
 import generator.InputGenerator;
+import util.OpenSaveData;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.List;
 
-public class BreakMain {
+public class BreakMain extends OpenSaveData {
     public static void main(String args[]) {
         InputGenerator inputGenerator = new InputGenerator();
 
-        String logDir = args[0];
-        String destination = args[1];
-        String[] files = {"\\tankMeasures", "\\refuel", "\\nozzleMeasures"};
+        logDir = args[0];
+        destination = args[1];
         for (String file : files) {
             List<String> results = inputGenerator.openData(logDir + File.separator + file + ".log");
             DataBreaker breaker = new DataBreaker();
@@ -23,16 +18,5 @@ public class BreakMain {
         }
 
 
-    }
-
-    private static void save(List<String> results, String dest) {
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(dest), StandardOpenOption.CREATE);) {
-            for (String s : results) {
-                bw.write(s);
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

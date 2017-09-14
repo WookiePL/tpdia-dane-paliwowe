@@ -1,5 +1,7 @@
 package datatype;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class NozzleMeasure {
@@ -68,5 +70,21 @@ public class NozzleMeasure {
                 ", totalCounter=" + totalCounter +
                 ", status=" + status +
                 '}';
+    }
+
+    public String toLine() {
+        String[] attributes = new String[7];
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        attributes[0] = df.format(timestamp);
+        attributes[1] = "";
+        attributes[2] = Integer.toString(idOfNozzle);
+        attributes[3] = Integer.toString(idOfTank);
+        attributes[4] = Float.toString(literCounter).replace(".", ",");
+        attributes[5] = Float.toString(totalCounter).replace(".", ",");
+        attributes[6] = Integer.toString(status);
+
+
+        return String.join(";", attributes);
     }
 }

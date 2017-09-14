@@ -67,4 +67,21 @@ public class TankMeasure {
                 ", fuelTemperature=" + fuelTemperature +
                 '}';
     }
+
+
+    public String toLine() {
+        String[] attributes = new String[7];
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        attributes[0] = df.format(timestamp);
+        attributes[1] = "";
+        attributes[2] = "";
+        attributes[3] = Integer.toString(idOfTank);
+        attributes[4] = Integer.toString(fuelLevel);
+        attributes[5] = Float.toString(fuelVolume).replace(".", ",");
+        attributes[6] = Integer.toString(fuelTemperature);
+
+
+        return String.join(";", attributes);
+    }
 }

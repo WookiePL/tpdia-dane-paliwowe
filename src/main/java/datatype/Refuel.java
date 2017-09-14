@@ -1,5 +1,7 @@
 package datatype;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Refuel {
@@ -40,11 +42,23 @@ public class Refuel {
 
     @Override
     public String toString() {
-        return "Refuel{" +
-                "timestamp=" + timestamp +
+        return timestamp +
                 ", idOfTank=" + idOfTank +
                 ", fuelVolume=" + fuelVolume +
                 ", refuelSpeed=" + refuelSpeed +
                 '}';
+    }
+
+    public String toLine() {
+        String[] attributes = new String[4];
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        attributes[0] = df.format(timestamp);
+        attributes[1] = Integer.toString(idOfTank);
+        attributes[2] = Double.toString(fuelVolume).replace(".", ",");
+        attributes[3] = Double.toString(refuelSpeed).replace(".", ",");
+
+
+        return String.join(";", attributes);
     }
 }

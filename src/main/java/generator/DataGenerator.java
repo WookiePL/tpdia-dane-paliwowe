@@ -16,7 +16,7 @@ public class DataGenerator<T> extends InputGenerator{
         return convert(records);
     }
 
-    private List<T> convert(List<String> records) {
+    public List<T> convert(List<String> records) {
         return records.stream().map(p -> converter.apply(p)).collect(Collectors.toList());
     }
 }

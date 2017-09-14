@@ -2,6 +2,7 @@ package datatype.converter;
 
 import datatype.NozzleMeasure;
 import datatype.TankMeasure;
+import org.apache.commons.validator.routines.DateValidator;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -23,6 +24,7 @@ public class Record2NozzleMeasureConverter implements Function<String, NozzleMea
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
             Date timestamp = df.parse(attributes[0]);
+
             Integer pisId = Integer.parseInt(attributes[2]);
             Integer tankId = Integer.parseInt(attributes[3]);
 

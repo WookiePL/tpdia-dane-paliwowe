@@ -11,7 +11,7 @@ public class DataGenerator<T> extends InputGenerator{
         this.converter = converter;
     }
 
-    List<T> getData(String path){
+    public List<T> getData(String path){
         List<String> records = super.openData(path);
         return convert(records);
     }

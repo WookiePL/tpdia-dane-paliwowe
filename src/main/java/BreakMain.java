@@ -14,7 +14,12 @@ public class BreakMain extends OpenSaveData {
         for (String file : files) {
             List<String> results = inputGenerator.openData(logDir + File.separator + file + ".log");
             DataBreaker breaker = new DataBreaker();
+
             save(breaker.run(results), destination + File.separator + file + "_broken.log");
+            System.out.println("Deleted: " + breaker.deleted);
+            System.out.println("Duplicated: " + breaker.duplicates);
+
+            System.out.println("Summary: " + (breaker.duplicates - breaker.deleted));
         }
 
 

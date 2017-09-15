@@ -18,13 +18,25 @@ public class OpenSaveData {
     protected static String[] files = {"\\tankMeasures", "\\refuel", "\\nozzleMeasures"};
 
     protected static void save(List<String> results, String dest) {
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(dest), StandardOpenOption.CREATE)) {
-            for (String s : results) {
-                bw.write(s);
-                bw.newLine();
-            }
+//        BufferedWriter bw = null;
+        try {
+            Files.write(Paths.get(dest), results, StandardOpenOption.CREATE);
+//            for (String s : results) {
+//                System.out.println(s);
+//                bw.write(s);
+//                bw.newLine();
+//
+//            }
+//            bw.flush();
+//            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+//            try {
+//                bw.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
     }
 

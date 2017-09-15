@@ -21,6 +21,7 @@ public class SmartRecord2NozzleMeasureConverter implements Function<String, Nozz
      */
     @Override
     public NozzleMeasure apply(String s) {
+        System.out.println(s);
         String[] attributes = s.split(";");
         Date timestamp = DateValidator.getInstance().validate(attributes[0], "yyyy-MM-dd HH:mm:ss");
 

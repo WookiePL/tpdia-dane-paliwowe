@@ -2,7 +2,9 @@ import datatype.NozzleMeasure;
 import datatype.converter.SmartRecord2NozzleMeasureConverter;
 import generator.DataGenerator;
 
+import java.io.File;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SmartDataGeneratorDemo {
     public static void main(String args[]) {

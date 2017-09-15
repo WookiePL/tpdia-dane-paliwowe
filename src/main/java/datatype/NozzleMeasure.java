@@ -73,7 +73,7 @@ public class NozzleMeasure implements Comparable<NozzleMeasure>{
     }
 
     public String toLine() {
-        String[] attributes = new String[7];
+        String[] attributes = {"", "", "", "", "", "", ""};
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         attributes[0] = df.format(timestamp);
@@ -83,7 +83,8 @@ public class NozzleMeasure implements Comparable<NozzleMeasure>{
         attributes[4] = Float.toString(literCounter).replace(".", ",");
         attributes[5] = Float.toString(totalCounter).replace(".", ",");
         attributes[6] = Integer.toString(status);
-        System.out.println(attributes);
+
+
         return String.join(";", attributes);
     }
 

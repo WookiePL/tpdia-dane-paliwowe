@@ -70,7 +70,7 @@ public class TankMeasure implements Comparable<TankMeasure>{
 
 
     public String toLine() {
-        String[] attributes = new String[7];
+        String[] attributes =  {"", "", "", "", "", "", ""};
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         attributes[0] = df.format(timestamp);

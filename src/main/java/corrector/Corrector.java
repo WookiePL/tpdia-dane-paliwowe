@@ -26,17 +26,18 @@ public class Corrector<T> extends OpenSaveData {
     public Corrector(String logDir, String destination) {
         //open all
         brokenRecords = super.openData(logDir + File.separator + files[2] + BROKEN_FILE_SUFFIX);
-        DataGenerator<NozzleMeasure> nozzleMeasureDataGenerator = new DataGenerator<>(new SmartRecord2NozzleMeasureConverter());
+        DataGenerator<NozzleMeasure> nozzleMeasureDataGenerator = new DataGenerator<>(new Record2NozzleMeasureConverter());
         nozzleMeasureList = nozzleMeasureDataGenerator.convert(brokenRecords);
 
         brokenRecords = super.openData(logDir + File.separator + files[1] + BROKEN_FILE_SUFFIX);
-        DataGenerator<Refuel> refuelDataGenerator = new DataGenerator<>(new SmartRecord2RefuelConverter());
+        DataGenerator<Refuel> refuelDataGenerator = new DataGenerator<>(new Record2RefuelConverter());
         refuelList = refuelDataGenerator.convert(brokenRecords);
 
         brokenRecords = super.openData(logDir + File.separator + files[0] + BROKEN_FILE_SUFFIX);
-        DataGenerator<TankMeasure> dataGenerator = new DataGenerator<>(new SmartRecord2TankMeasureConverter());
+        DataGenerator<TankMeasure> dataGenerator = new DataGenerator<>(new Record2TankMeasureConverter());
         tankMeasureList = dataGenerator.convert(brokenRecords);
 
+        //correct all
         nozzleMeasureList = removeDuplicates(nozzleMeasureList);
         nozzleMeasureList = sortList(nozzleMeasureList);
 
@@ -48,16 +49,15 @@ public class Corrector<T> extends OpenSaveData {
 
         //save all
         List<String> nozzleMeasureRecords = nozzleMeasureList.stream().map(nozzle -> nozzle.toLine()).collect(Collectors.toList());
-        save(nozzleMeasureRecords, destination + File.separator + files[2] + CORRECTED_FILE_SUFFIX) ;
+        save(nozzleMeasureRecords, destination + File.separator + files[2] + CORRECTED_FILE_SUFFIX);
 
         List<String> refuelRecords = refuelList.stream().map(refuel -> refuel.toLine()).collect(Collectors.toList());
-                save(refuelRecords, destination + File.separator + files[1] + CORRECTED_FILE_SUFFIX) ;
-        
+        save(refuelRecords, destination + File.separator + files[1] + CORRECTED_FILE_SUFFIX);
+
         List<String> tankMesureRecords = tankMeasureList.stream().map(tankMeasure -> tankMeasure.toLine()).collect(Collectors.toList());
-                save(tankMesureRecords, destination + File.separator + files[0] + CORRECTED_FILE_SUFFIX) ;
+        save(tankMesureRecords, destination + File.separator + files[0] + CORRECTED_FILE_SUFFIX);
 
     }
-
     private <R> List<R> sortList(List<R> list) {
         return list.stream().sorted().collect(Collectors.toList());
     }
@@ -65,6 +65,5 @@ public class Corrector<T> extends OpenSaveData {
     private <R> List<R> removeDuplicates(List<R> list){
         return list.stream().collect(Collectors.toCollection(TreeSet::new)).stream().collect(Collectors.toList());
     }
-
 }
 

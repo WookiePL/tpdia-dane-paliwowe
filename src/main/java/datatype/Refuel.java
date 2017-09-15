@@ -50,7 +50,7 @@ public class Refuel implements Comparable<Refuel>{
     }
 
     public String toLine() {
-        String[] attributes = new String[4];
+        String[] attributes =  {"", "", "", ""};
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         attributes[0] = df.format(timestamp);

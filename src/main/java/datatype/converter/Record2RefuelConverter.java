@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.function.Function;
 
-public class RecordToRefuelConverter implements Function<String, Refuel>{
+public class Record2RefuelConverter implements Function<String, Refuel>{
     /**
      * Applies this function to the given argument.
      *

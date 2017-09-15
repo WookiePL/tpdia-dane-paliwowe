@@ -40,6 +40,12 @@ public class Corrector<T> extends OpenSaveData {
         nozzleMeasureList = removeDuplicates(nozzleMeasureList);
         nozzleMeasureList = sortList(nozzleMeasureList);
 
+        refuelList = removeDuplicates(refuelList);
+        refuelList = sortList(refuelList);
+
+        tankMeasureList = removeDuplicates(tankMeasureList);
+        tankMeasureList = sortList(tankMeasureList);
+
         //save all
         List<String> nozzleMeasureRecords = nozzleMeasureList.stream().map(nozzle -> nozzle.toLine()).collect(Collectors.toList());
         save(nozzleMeasureRecords, destination + File.separator + files[2] + CORRECTED_FILE_SUFFIX) ;
